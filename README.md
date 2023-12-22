@@ -1,16 +1,17 @@
 # flutter_base_structure
 
-A new Flutter project.
+### This base structure includes following features
 
-## Getting Started
+- Google Font to support the App level font
+- Bloc Pattern Architecture
+- Dio for Networking (API Calling)
+- Shared Preferences
+- Connectivity Check
 
-This project is a starting point for a Flutter application.
+### References
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Google Font : https://pub.dev/packages/google_fonts
+## Bloc Pattern : https://pub.dev/packages/flutter_bloc
+## Dio : https://pub.dev/packages/dio
+## Shared Preference : https://pub.dev/packages/shared_preferences
+## Connectivity : https://pub.dev/packages/connectivity_plus
