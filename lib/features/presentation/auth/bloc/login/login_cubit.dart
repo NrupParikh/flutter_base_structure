@@ -28,7 +28,7 @@ class LogInCubit extends Cubit<LogInState> {
         if (data.statusCode == 200) {
           emit(LogInSuccessState());
         } else {
-          emit(LogInFailureState(data.result.toString()));
+          emit(LogInFailureState(data.message.toString()));
         }
       } on DioException catch (ex) {
         emit(LogInFailureState(apiError(ex)));

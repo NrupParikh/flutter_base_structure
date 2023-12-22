@@ -16,5 +16,5 @@ class StringConstants {
   static const String titleLoginScreen = "Login Screen";
   static const String titleHomeScreen = "Home Screen";
 
-  static const String msgLogoutConfirmation = "Are you sure you want to Log Out of MRO?";
+  static const String msgLogoutConfirmation = "Are you sure you want to Log out?";
 }
