@@ -1,4 +1,4 @@
-# flutter_base_structure
+# Flutter Base Structure
 
 ### This base structure includes following features
 
