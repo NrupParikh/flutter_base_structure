@@ -18,32 +18,28 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final pref = InShapeSharedPreferenceProvider.of(context)?.preference;
-
+    final email = pref?.getString(AppConstants.prefKeyEmail);
     return Scaffold(
-      appBar: AppBar(title: const Text(StringConstants.titleHomeScreen), backgroundColor: Colors.tealAccent),
+      appBar: AppBar(
+        title: const Text(StringConstants.titleHomeScreen),
+        backgroundColor: Colors.tealAccent,
+        actions: [
+          IconButton(
+              onPressed: () {
+                displayDialog(pref!, context);
+              },
+              icon: const Icon(
+                Icons.logout,
+                color: Colors.black,
+              ))
+        ],
+      ),
       body: Container(
           color: Colors.white,
           child: Center(
-            child: Column(
-              children: [
-                const Text(StringConstants.titleHomeScreen,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 32)),
-                const SizedBox(
-                  height: 30,
-                ),
-                ElevatedButton(
-                    key: const Key(keyLogoutButton),
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.tealAccent)),
-                    onPressed: () {
-                      displayDialog(pref!, context);
-                    },
-                    child: const Text(
-                      StringConstants.lblLogin,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
-                    )),
-              ],
-            ),
+            child: Text("Welcome $email !",
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 32)),
           )),
     );
   }

@@ -68,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
           listener: (context, state) {
             if (state is LogInSuccessState) {
               pref?.setBool(AppConstants.prefKeyIsLoggedIn, true);
+              pref?.setString(AppConstants.prefKeyEmail, emailAddressController.text);
               hideLoading(_dialogKey);
               // Remove Auth Flow from Stack and Move to Home
               Navigator.pushNamedAndRemoveUntil(context, AppConstants.routeHome, (route) => false);

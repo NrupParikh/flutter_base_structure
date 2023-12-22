@@ -12,4 +12,5 @@ class AppConstants {
 
   // Pref Key
   static const String prefKeyIsLoggedIn = "isLoggedIn";
+  static const String prefKeyEmail = "userEmail";
 }
