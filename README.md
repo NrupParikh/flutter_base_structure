@@ -2,11 +2,12 @@
 
 ### This base structure includes following features
 
-- Google Font to support the App level font
 - Bloc Pattern Architecture
+- Google Font to support the App level font
 - Dio for Networking (API Calling)
 - Shared Preferences
 - Connectivity Check
+- CI/CD integration with use of GitHub Action
 
 ## References
 
