@@ -7,7 +7,6 @@ import 'package:flutter_base_structure/config/shared_preferences/singleton/insha
 import 'package:flutter_base_structure/features/domain/repository/singleton/inshape_repository.dart';
 import 'package:flutter_base_structure/features/models/login/login_response.dart';
 import 'package:flutter_base_structure/features/presentation/auth/bloc/login/login_state.dart';
-import 'dart:convert';
 
 class LogInCubit extends Cubit<LogInState> {
   LogInCubit() : super(LogInInitialState());
