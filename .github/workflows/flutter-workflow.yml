@@ -42,10 +42,10 @@ jobs:
           cache: true
 
       # Get dependencies of flutter
-      - run flutter pub get
-      - run flutter format --set-exit-if-changed .
-      - run flutter analyze .
-      - run flutter build apk
+      - run: flutter pub get
+      - run: flutter format --set-exit-if-changed .
+      - run: flutter analyze .
+      - run: flutter build apk
 
       - name: Upload the build
         uses: actions/upload-artifact@v4
