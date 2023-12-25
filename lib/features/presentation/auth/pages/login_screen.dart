@@ -1,5 +1,4 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_structure/config/constants/app_constants.dart';
 import 'package:flutter_base_structure/config/constants/string_constants.dart';
