@@ -52,5 +52,5 @@ jobs:
       - name: Upload the build
         uses: actions/upload-artifact@v4
         with:
-          name: release-apk
+          name: flutter_base_structure_release-apk
           path: build/app/outputs/apk/release/app-release.apk
