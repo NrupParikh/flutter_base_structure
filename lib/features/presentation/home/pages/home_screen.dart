@@ -13,7 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const keyLogoutButton = "logout_button";
 
   @override
   Widget build(BuildContext context) {
