@@ -52,12 +52,12 @@ jobs:
       - name: Upload the build
         uses: actions/upload-artifact@v4
         with:
-          name: flutter_base_structure_release-apk
+          name: build
           path: build/app/outputs/apk/release/app-release.apk
 
       - name: Download Artifact
         uses: actions/download-artifact@v4
-        with: flutter_base_structure_release-apk
+        with: build
         path: build/app/outputs/apk/release/app-release.apk
 
       # Slack Integration
