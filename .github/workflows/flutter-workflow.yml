@@ -55,9 +55,19 @@ jobs:
           name: flutter_base_structure_release-apk
           path: build/app/outputs/apk/release/app-release.apk
 
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build/app/outputs/apk/release/app-release.apk
+
       # Slack Integration
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
+        with:
+          status: ${{ job.status }}
+          text: "Build ${{ job.status }} for commit ${{ github.sha }} in branch ${{ github.ref }}."
+
         env:
           SLACK_CHANNEL: flutter-cicd
           SLACK_TITLE: Post title
