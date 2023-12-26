@@ -37,9 +37,6 @@ jobs:
           java-version: '18'
           cache: 'gradle'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
       # Flutter environment for use in GitHub Actions
       - uses: subosito/flutter-action@v2
         with:
