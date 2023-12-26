@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Flutter CI
+name: Flutter Base Structure CI/CD
 
 # Controls when the workflow will run
 on:
@@ -58,9 +58,13 @@ jobs:
       # Slack Integration
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
+        with:
+          status: ${{ job.status }}
+          fields: build_number,event_name,commit_message,repository,ref,workflow,actor,job,committer
+
         env:
           SLACK_CHANNEL: flutter-cicd
-          SLACK_TITLE: Post title
+          SLACK_TITLE: Update from Flutter Base Structure
           SLACK_USERNAME: nrup.parikh
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_MESSAGE: "This message is from Github action."
