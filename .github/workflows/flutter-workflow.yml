@@ -52,25 +52,24 @@ jobs:
       - name: Upload the build
         uses: actions/upload-artifact@v4
         with:
-          name: build
+          name: flutter_base_structure_release-apk
           path: build/app/outputs/apk/release/app-release.apk
 
-    notify_slack:
-        runs-on: ubuntu-latest
-        need: build
-        steps:
-          - name: Download Build
-            uses: actions/download-artifact@v4
-            with:
-              name: build
-              path: build/app/outputs/apk/release/app-release.apk
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with: flutter_base_structure_release-apk
+        path: build/app/outputs/apk/release/app-release.apk
 
-          - name: Slack Notification
-            uses: rtCamp/action-slack-notify@v2
+      # Slack Integration
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        with:
+          status: ${{ job.status }}
+          text: "Build ${{ job.status }} for commit ${{ github.sha }} in branch ${{ github.ref }}."
 
-            env:
-              SLACK_CHANNEL: flutter-cicd
-              SLACK_TITLE: Update from Flutter Base Structure
-              SLACK_USERNAME: nrup.parikh
-              SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-              SLACK_MESSAGE: "This message is from Github action."
+        env:
+          SLACK_CHANNEL: flutter-cicd
+          SLACK_TITLE: Update from Flutter Base Structure
+          SLACK_USERNAME: nrup.parikh
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_MESSAGE: "This message is from Github action."
