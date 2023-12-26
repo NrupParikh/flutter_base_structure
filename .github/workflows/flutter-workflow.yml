@@ -37,6 +37,9 @@ jobs:
           java-version: '18'
           cache: 'gradle'
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
       # Flutter environment for use in GitHub Actions
       - uses: subosito/flutter-action@v2
         with:
@@ -55,14 +58,14 @@ jobs:
           name: build
           path: build/app/outputs/apk/release/app-release.apk
 
-      - name: Remove Existing Directory
-        run: rm -rf build/
-
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build/app/outputs/apk/release/app-release.apk
+#      - name: Remove Existing Directory
+#        run: rm -rf build/
+#
+#      - name: Download Artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: build
+#          path: build/app/outputs/apk/release/app-release.apk
 
       # Slack Integration
       - name: Slack Notification
@@ -76,4 +79,4 @@ jobs:
           SLACK_TITLE: Post title
           SLACK_USERNAME: nrup.parikh
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_MESSAGE: "This message is from Github action."
+          SLACK_MESSAGE: "Wow. You have new message from Github."
