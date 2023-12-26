@@ -4,7 +4,6 @@ import '../singleton/api.dart';
 
 class APIProvider extends InheritedWidget {
   final API api;
-  final a="";
 
   const APIProvider({
     Key? key,

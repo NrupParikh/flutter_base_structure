@@ -84,4 +84,4 @@ jobs:
           SLACK_TITLE: Post title
           SLACK_USERNAME: nrup.parikh
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_MESSAGE: "Wow. You have new message from Github."
+          SLACK_MESSAGE: "New release app available. Please install it."
