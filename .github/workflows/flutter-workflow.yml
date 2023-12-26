@@ -47,12 +47,12 @@ jobs:
       # Get dependencies of flutter
       - run: flutter pub get
       - run: flutter analyze .
-      - run: flutter build apk
+      - run: flutter build apk --no-tree-shake-icons
 
       - name: Upload the build
         uses: actions/upload-artifact@v4
         with:
-          name: flutter_base_structure_release-apk
+          name: build
           path: build/app/outputs/apk/release/app-release.apk
 
       - name: Download Artifact
