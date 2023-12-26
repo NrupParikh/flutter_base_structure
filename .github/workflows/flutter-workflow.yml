@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Flutter Base Structure CI/CD
+name: Flutter CI
 
 # Controls when the workflow will run
 on:
@@ -52,24 +52,15 @@ jobs:
       - name: Upload the build
         uses: actions/upload-artifact@v4
         with:
-          name: build
+          name: flutter_base_structure_release-apk
           path: build/app/outputs/apk/release/app-release.apk
 
-#      - name: Download Artifact
-#        uses: actions/download-artifact@v4
-#        with: build
-#        path: build/app/outputs/apk/release/app-release.apk
-#
-#      # Slack Integration
-#      - name: Slack Notification
-#        uses: rtCamp/action-slack-notify@v2
-#        with:
-#          status: ${{ job.status }}
-#          text: "Build ${{ job.status }} for commit ${{ github.sha }} in branch ${{ github.ref }}."
-
+      # Slack Integration
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: flutter-cicd
-          SLACK_TITLE: Update from Flutter Base Structure
+          SLACK_TITLE: Post title
           SLACK_USERNAME: nrup.parikh
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_MESSAGE: "This message is from Github action."
