@@ -54,3 +54,13 @@ jobs:
         with:
           name: flutter_base_structure_release-apk
           path: build/app/outputs/apk/release/app-release.apk
+
+      # Slack Integration
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: flutter-cicd
+          SLACK_TITLE: Post title
+          SLACK_USERNAME: nrup.parikh
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_MESSAGE: "This message is from Github action."
