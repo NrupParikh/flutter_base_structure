@@ -65,6 +65,14 @@ jobs:
 #          path: build/app/outputs/apk/release/app-release.apk
 
       # Slack Integration
+      - name: Upload build to slack
+        uses: MeilCli/slack-upload-file@v3
+        with:
+          slack_token: ${{secrets.SLACK_BOT_TOKEN}}
+          channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
+          file_path: build/app/outputs/apk/release/app-release.apk
+          initial_comment: 'Release APK for Flutter Base Structure App'
+
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         with:
