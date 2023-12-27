@@ -9,6 +9,10 @@
 - Connectivity Check
 - CI/CD integration with use of GitHub Action
 
+### Folder Structure
+----
+![Flutter_Base_Structure](https://github.com/NrupParikh/flutter_base_structure/assets/108717119/dbe9c0d2-beef-49a4-b2cc-6548756bfcb4)
+
 ## References
 
 ### Google Font : https://pub.dev/packages/google_fonts
@@ -18,7 +22,7 @@
 ### Connectivity : https://pub.dev/packages/connectivity_plus
 
 ## How to implement CI/CD with GitHub Action and send build on Slack channel
-
+-----
 ### Up project on GitHub
 - Create a sample Flutter application
 - Enable VCS Integration
