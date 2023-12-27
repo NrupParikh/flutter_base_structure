@@ -66,7 +66,7 @@ jobs:
           slack_token: ${{secrets.SLACK_BOT_TOKEN}}
           channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
           file_path: build/app/outputs/apk/release/app-release.apk
-          initial_comment: 'post by slack-upload-file'
+          initial_comment: 'New release app available. Please install it.'
 
       # Slack Integration STEP2  : Sending notification on slack channel
       - name: Slack Notification
@@ -80,4 +80,4 @@ jobs:
           SLACK_TITLE: Post title
           SLACK_USERNAME: nrup.parikh
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_MESSAGE: "New release app available. Please install it."
+          SLACK_MESSAGE: "${{ github.event.workflow_run.head_commit.message }}"
