@@ -4,6 +4,8 @@ name: Flutter CI
 
 # Controls when the workflow will run
 on:
+
+  # Triggers the workflow on pull for the "main" branch
   pull_request:
     branches: ['master']
 
@@ -19,6 +21,7 @@ jobs:
 
   # This workflow contains a single job called "build"
   build:
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -49,22 +52,14 @@ jobs:
       - run: flutter analyze .
       - run: flutter build apk --no-tree-shake-icons
 
+      # Uploading the build on GitHub
       - name: Upload the build
         uses: actions/upload-artifact@v4
         with:
           name: build
           path: build/app/outputs/apk/release/app-release.apk
 
-#      - name: Remove Existing Directory
-#        run: rm -rf build/
-#
-#      - name: Download Artifact
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: build
-#          path: build/app/outputs/apk/release/app-release.apk
-
-      # Slack Integration
+      # Slack Integration STEP1 : Upload build to Slack
       - name: Upload build to slack
         uses: MeilCli/slack-upload-file@v3
         with:
@@ -73,6 +68,7 @@ jobs:
           file_path: build/app/outputs/apk/release/app-release.apk
           initial_comment: 'post by slack-upload-file'
 
+      # Slack Integration STEP2  : Sending notification on slack channel
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         with:
