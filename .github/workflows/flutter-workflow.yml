@@ -7,11 +7,15 @@ on:
 
   # Triggers the workflow on pull for the "main" branch
   pull_request:
-    branches: ['master']
+    branches:
+      - master
+      - development
 
   # Triggers the workflow on push for the "main" branch
   push:
-    branches: ['master']
+    branches:
+      - master
+      - development
 
     # Allows you to run this workflow manually from the Actions tab
     workflow_dispatch:
@@ -50,17 +54,23 @@ jobs:
       # Get dependencies of flutter
       - run: flutter pub get
       - run: flutter analyze .
-      - run: flutter build apk --no-tree-shake-icons
 
-      # Uploading the build on GitHub
-      - name: Upload the build
+      # Only build if the branch is 'master'
+      - if: github.ref == 'refs/head/master'
+        run: flutter build apk --no-tree-shake-icons
+
+      # Only upload the build if the branch is 'master'
+      - if: github.ref == 'refs/head/master'
+        name: Upload the build
         uses: actions/upload-artifact@v4
         with:
           name: build
           path: build/app/outputs/apk/release/app-release.apk
 
       # Slack Integration STEP1 : Upload build to Slack
-      - name: Upload build to slack
+      # Only execute these steps if the branch is 'master'
+      - if: github.ref == 'refs/head/master'
+        name: Upload build to slack
         uses: MeilCli/slack-upload-file@v3
         with:
           slack_token: ${{secrets.SLACK_BOT_TOKEN}}
@@ -69,7 +79,9 @@ jobs:
           initial_comment: 'New release app available. Please install it.'
 
       # Slack Integration STEP2  : Sending notification on slack channel
-      - name: Slack Notification
+      # Only execute these steps if the branch is 'master'
+      - if: github.ref == 'refs/heads/master'
+        name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         with:
           status: ${{ job.status }}
