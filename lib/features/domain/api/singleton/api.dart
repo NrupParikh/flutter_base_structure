@@ -14,7 +14,6 @@ class API {
     _dio.options.receiveTimeout = const Duration(seconds: 30);
     _dio.options.followRedirects = false;
 
-
   }
 
   final Dio _dio =    Dio();
