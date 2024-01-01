@@ -61,11 +61,11 @@ jobs:
       - run: flutter analyze .
 
       # Only build if the branch is 'master'
-      - if: github.ref == 'refs/head/master'
+      - if: github.ref == 'refs/heads/master'
         run: flutter build apk --no-tree-shake-icons
 
       # Only upload the build if the branch is 'master'
-      - if: github.ref == 'refs/head/master'
+      - if: github.ref == 'refs/heads/master'
         name: Upload the build
         uses: actions/upload-artifact@v4
         with:
