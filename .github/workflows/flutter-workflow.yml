@@ -74,7 +74,7 @@ jobs:
 
       # Slack Integration STEP1 : Upload build to Slack
       # Only execute these steps if the branch is 'master'
-      - if: github.ref == 'refs/head/master'
+      - if: github.ref == 'refs/heads/master'
         name: Upload build to slack
         uses: MeilCli/slack-upload-file@v3
         with:
