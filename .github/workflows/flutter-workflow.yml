@@ -84,9 +84,7 @@ jobs:
           initial_comment: 'New release app available. Please install it.'
 
       # Slack Integration STEP2  : Sending notification on slack channel
-      # Only execute these steps if the branch is 'master'
-      - if: github.ref == 'refs/heads/master'
-        name: Slack Notification
+      - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         with:
           status: ${{ job.status }}
