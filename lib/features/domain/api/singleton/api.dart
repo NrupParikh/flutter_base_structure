@@ -13,9 +13,11 @@ class API {
     _dio.options.connectTimeout = const Duration(seconds: 30);
     _dio.options.receiveTimeout = const Duration(seconds: 30);
     _dio.options.followRedirects = false;
+
+
   }
 
-  final Dio _dio = Dio();
+  final Dio _dio =    Dio();
 
-  Dio get sendRequest => _dio;
+  Dio get sendRequest =>   _dio;
 }
