@@ -12,6 +12,7 @@ on:
       - development
       - dev_bhargav
       - dev_kamlesh
+      - dev_ios
 
   # Triggers the workflow on push for the "main" branch
   push:
@@ -20,6 +21,7 @@ on:
       - development
       - dev_bhargav
       - dev_kamlesh
+      - dev_ios
 
     # Allows you to run this workflow manually from the Actions tab
     workflow_dispatch:
@@ -84,7 +86,7 @@ jobs:
         run: tar -czvf ios-build.tar.gz build/ios/Runner.app
 
       - name: Upload iOS build
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ios-build
           path: ios-build.tar.gz
