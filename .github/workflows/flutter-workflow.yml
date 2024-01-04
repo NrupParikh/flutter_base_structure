@@ -145,8 +145,8 @@ jobs:
             # Your code signing configuration and steps go here
             # For example, copying certificates and provisioning profiles
 
-      - name: Archive iOS build
-        run: tar -czvf ios-build.tar.gz build/ios/Runner.app
+#      - name: Archive iOS build
+#        run: tar -czvf ios-build.tar.gz build/ios/Runner.app
 
       - name: Upload iOS build
         uses: actions/upload-artifact@v4
