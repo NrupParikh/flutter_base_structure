@@ -1,4 +1,4 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
+//import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_structure/config/constants/app_constants.dart';
 import 'package:flutter_base_structure/config/constants/string_constants.dart';
@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final pref = InShapeSharedPreferenceProvider.of(context)?.preference;
     debugPrint("TAG_PREF_LOGIN ${pref?.getBool(AppConstants.prefKeyIsLoggedIn)}");
 
-    Connectivity connectivity = Connectivity();
+   // Connectivity connectivity = Connectivity();
 
     return Scaffold(
       appBar: AppBar(
@@ -115,15 +115,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           key: const Key(keyLoginButton),
                           style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.tealAccent)),
                           onPressed: () async {
-                            await connectivity.checkConnectivity().then((value) {
-                              if (value == ConnectivityResult.none) {
-                                logInCubit.submitForm(
-                                    emailAddressController.text, passwordController.text, inShapeRepository!, pref!, false);
-                              } else {
-                                logInCubit.submitForm(
-                                    emailAddressController.text, passwordController.text, inShapeRepository!, pref!, true);
-                              }
-                            });
+                            logInCubit.submitForm(
+                                emailAddressController.text, passwordController.text, inShapeRepository!, pref!, true);
+                            // await connectivity.checkConnectivity().then((value) {
+                            //   if (value == ConnectivityResult.none) {
+                            //     logInCubit.submitForm(
+                            //         emailAddressController.text, passwordController.text, inShapeRepository!, pref!, false);
+                            //   } else {
+                            //
+                            //   }
+                            // });
                           },
                           child: const Text(
                             StringConstants.lblLogin,
