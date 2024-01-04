@@ -76,6 +76,21 @@ jobs:
           name: build
           path: build/app/outputs/apk/release/app-release.apk
 
+      # ================= IOS PART
+      - name: Build iOS app
+        run: flutter build ios --release
+
+      - name: Archive iOS build
+        run: tar -czvf ios-build.tar.gz build/ios/Runner.app
+
+      - name: Upload iOS build
+        uses: actions/upload-artifact@v2
+        with:
+          name: ios-build
+          path: ios-build.tar.gz
+
+      # ================= END OF IOS PART
+
       # Slack Integration STEP1 : Upload build to Slack
       # Only execute these steps if the branch is 'master'
       - if: github.ref == 'refs/heads/master'
