@@ -30,7 +30,7 @@ on:
 jobs:
 
   # This workflow contains a single job called "build"
-  build:
+  build-android:
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -78,18 +78,18 @@ jobs:
           name: build
           path: build/app/outputs/apk/release/app-release.apk
 
-      # ================= IOS PART
-      - name: Build iOS app
-        run: flutter build ios --release
-
-      - name: Archive iOS build
-        run: tar -czvf ios-build.tar.gz build/ios/Runner.app
-
-      - name: Upload iOS build
-        uses: actions/upload-artifact@v4
-        with:
-          name: ios-build
-          path: ios-build.tar.gz
+#      # ================= IOS PART
+#      - name: Build iOS app
+#        run: flutter build ios --release
+#
+#      - name: Archive iOS build
+#        run: tar -czvf ios-build.tar.gz build/ios/Runner.app
+#
+#      - name: Upload iOS build
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: ios-build
+#          path: ios-build.tar.gz
 
       # ================= END OF IOS PART
 
@@ -117,3 +117,30 @@ jobs:
           SLACK_USERNAME: nrup.parikh
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_MESSAGE: "${{ github.event.workflow_run.head_commit.message }}"
+
+  build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout for IOS
+        uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.5'
+          channel: 'stable'
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Build iOS app
+        run: flutter build ios --release
+
+      - name: Archive iOS build
+        run: tar -czvf ios-build.tar.gz build/ios/Runner.app
+
+      - name: Upload iOS build
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build
+          path: ios-build.tar.gz
