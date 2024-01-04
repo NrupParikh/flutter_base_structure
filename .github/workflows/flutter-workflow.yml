@@ -131,10 +131,19 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - run: flutter pub get
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Install Xcode dependencies
+        run: sudo xcode-select --switch /Applications/Xcode_15.x.app
 
       - name: Build iOS app
-        run: flutter build ios --release
+        run: flutter build ios --release --no-codesign
+
+      - name: Handle Code Signing
+        run: |
+            # Your code signing configuration and steps go here
+            # For example, copying certificates and provisioning profiles
 
       - name: Archive iOS build
         run: tar -czvf ios-build.tar.gz build/ios/Runner.app
