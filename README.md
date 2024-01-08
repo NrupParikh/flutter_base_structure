@@ -103,3 +103,40 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
         SLACK_MESSAGE: "New release app available."
 ```
+
+## Setting Secret variable in GitHub for IOS
+----
+
+### BUILD_CERTIFICATE_BASE64
+
+- This likely refers to the base64-encoded representation of your Apple Developer certificate.
+- You can obtain this by base64 encoding your certificate file.
+On your local machine, you can use the following command to base64 encode your certificate:
+
+```
+base64 -i path/to/your/certificate.p12
+```
+- Take the output and set it as the secret BUILD_CERTIFICATE_BASE64 in your GitHub repository.
+
+### P12_PASSWORD
+
+- This is the password for your .p12 file, which is usually set during the export process.
+- It's the same password you would use to unlock the .p12 file.
+- Set the password as the secret P12_PASSWORD in your GitHub repository.
+
+### BUILD_PROVISION_PROFILE_BASE64
+
+- Similar to the certificate, this likely refers to the base64-encoded representation of your provisioning profile.
+- You can obtain this by base64 encoding your provisioning profile file.
+- On your local machine, you can use the following command
+
+```
+base64 -i path/to/your/provisioning-profile.mobileprovision
+
+```
+- Set the output as the secret BUILD_PROVISION_PROFILE_BASE64 in your GitHub repository.
+
+### KEYCHAIN_PASSWORD
+
+- This is the password for the keychain where your certificate and private key are stored.
+- Set the password as the secret KEYCHAIN_PASSWORD in your GitHub repository.
