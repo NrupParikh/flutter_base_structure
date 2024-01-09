@@ -94,7 +94,7 @@ jobs:
           uses: actions/upload-artifact@v4
           with:
             name: build
-            path: build/app/outputs/apk/release/app-release.aab
+            path: build/app/outputs/bundle/release/app-release.aab
 
         # Slack Integration STEP1 : Upload build to Slack
         # Only execute these steps if the branch is 'master'
@@ -104,7 +104,7 @@ jobs:
           with:
             slack_token: ${{secrets.SLACK_BOT_TOKEN}}
             channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
-            file_path: build/app/outputs/apk/release/app-release.apk
+            file_path: build/app/outputs/bundle/release/app-release.aab
             initial_comment: 'New release app available. Please install it.'
 
         # Slack Integration STEP2  : Sending notification on slack channel
