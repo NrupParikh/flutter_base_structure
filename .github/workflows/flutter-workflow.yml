@@ -50,7 +50,7 @@ jobs:
         # KeyStore related operations
         - name: Download Android Keystore
           id: android_keystore
-          uses: timeheuer/base64-to-file@v1.2
+          uses: timheuer/base64-to-file@v1.2
           with:
             fileName: basestructure-keystore.jks
             encodedString: ${{ secrets.ANDROID_KEYSTORE_BASE64}}
