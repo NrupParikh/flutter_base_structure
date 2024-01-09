@@ -47,6 +47,22 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v4
 
+        # KeyStore related operations
+        - name: Download Android Keystore
+          id: android_keystore
+          uses: timeheuer/base64-to-file@v1.2
+          with:
+            fileName: basestructure-keystore.jks
+            encodedString: ${{ secrets.ANDROID_KEYSTORE_BASE64}}
+
+        - name: Create key.properties
+          run: |
+            echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" > android/key.properties
+            echo "storePassword=${{ secrets.ANDROID_STORE_PASSWORD }}" >> android/key.properties
+            echo "keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}" >> android/key.properties
+            echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> android/key.properties
+        
+
         # Set Up Java JDK
         - name: Set up JAVA JDK
           uses: actions/setup-java@v3
@@ -68,7 +84,9 @@ jobs:
 
         # Only build if the branch is 'master'
         - if: github.ref == 'refs/heads/master'
-          run: flutter build apk --no-tree-shake-icons
+          run: flutter build appbundle
+
+#          run: flutter build apk --no-tree-shake-icons
 
         # Only upload the build if the branch is 'master'
         - if: github.ref == 'refs/heads/master'
@@ -76,7 +94,7 @@ jobs:
           uses: actions/upload-artifact@v4
           with:
             name: build
-            path: build/app/outputs/apk/release/app-release.apk
+            path: build/app/outputs/apk/release/app-release.aab
 
         # Slack Integration STEP1 : Upload build to Slack
         # Only execute these steps if the branch is 'master'
