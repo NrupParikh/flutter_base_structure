@@ -140,3 +140,23 @@ base64 -i path/to/your/provisioning-profile.mobileprovision
 
 - This is the password for the keychain where your certificate and private key are stored.
 - Set the password as the secret KEYCHAIN_PASSWORD in your GitHub repository.
+
+### How to generate Key Store for Android
+
+----
+
+- First get the Java path from below command
+- In Android studio terminal : flutter doctor -v
+- Copy the path of : Java binary at
+- Copy that path up to bin Ex. C:\Program Files\Android\Android Studio\bin
+- Open Environment variable : System and set it to Path variable
+- Now Go to C:\Program Files\Android\Android Studio\bin
+- Press and Hold Shift + Right click
+- Open the power shell here option
+- Now execute below command to generate key store at specific path
+
+```
+keytool -genkey -v -keystore F:\demos\flutter_base_structure\android\cert\basestructure-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias basestructure
+```
+
+- NOTE : Here cert folder created previously to store our keystore in Flutter project's android folder
