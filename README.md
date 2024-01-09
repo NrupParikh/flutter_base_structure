@@ -111,7 +111,7 @@ jobs:
 
 - This likely refers to the base64-encoded representation of your Apple Developer certificate.
 - You can obtain this by base64 encoding your certificate file.
-On your local machine, you can use the following command to base64 encode your certificate:
+  On your local machine, you can use the following command to base64 encode your certificate:
 
 ```
 base64 -i path/to/your/certificate.p12
@@ -147,8 +147,8 @@ base64 -i path/to/your/provisioning-profile.mobileprovision
 
 - First get the Java path from below command
 - In Android studio terminal : flutter doctor -v
-- Copy the path of : Java binary at
-- Copy that path up to bin Ex. C:\Program Files\Android\Android Studio\bin
+- Copy the path of : Java binary at : C:\Program Files\Android\Android Studio\jbr\bin\java
+- Copy that path up to bin Ex. C:\Program Files\Android\Android Studio\jbr\bin
 - Open Environment variable : System and set it to Path variable
 - Now Go to C:\Program Files\Android\Android Studio\bin
 - Press and Hold Shift + Right click
